@@ -153,6 +153,12 @@ namespace cwg727 { // cwg727: partial
       // expected-error@-2 {{variable template partial specialization of 'N' not in class 'A' or an enclosing namespace}}
       //   expected-note@#cwg727-N {{explicitly specialized declaration is here}}
     };
+
+    template <class> struct E {
+      template <class> struct F {};
+    };
+    template <> template <class> struct E<void>::F {};
+    template <> template <class> struct E<char>::F {};
   };
 
   template<> struct A::C<char>;
